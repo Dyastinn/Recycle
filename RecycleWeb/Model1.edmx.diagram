@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4b476941d8c84429a40322d9bbbeb352" Name="Diagram1">
-        <EntityTypeShape EntityType="RecycableModel.RecyclableItem" Width="1.5" PointX="7.125" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecycableModel.RecyclableType" Width="1.5" PointX="4.125" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecycableModel.RecyclableItem" Width="1.5" PointX="5.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecycableModel.RecyclableType" Width="1.5" PointX="2.625" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="RecycableModel.FK__Recyclabl__Recyc__286302EC" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
