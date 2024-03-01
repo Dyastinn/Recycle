@@ -11,7 +11,8 @@ namespace RecycleWeb
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class RecyclableType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +24,11 @@ namespace RecycleWeb
         public int Id { get; set; }
         public string Type { get; set; }
         public decimal Rate { get; set; }
+
+        [DisplayName("Minimum Kg")]
         public decimal MinKg { get; set; }
+
+        [DisplayName("Maximum Kg")]
         public decimal MaxKg { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

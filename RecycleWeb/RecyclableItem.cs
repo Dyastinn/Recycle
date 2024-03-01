@@ -11,13 +11,23 @@ namespace RecycleWeb
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class RecyclableItem
     {
         public int Id { get; set; }
+
+        [DisplayName("Recyclable Type Id")]
         public int RecyclableTypeId { get; set; }
+        [ForeignKey("RecyclableTypeId")]
+        RecyclableType Recyclable { get; set; }
         public decimal Weight { get; set; }
+
+        [DisplayName("Computed Rate")]
         public decimal ComputedRate { get; set; }
+
+        [DisplayName("Item Description")]
         public string ItemDescription { get; set; }
     
         public virtual RecyclableType RecyclableType { get; set; }
