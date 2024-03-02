@@ -26,8 +26,8 @@ The project consists of two main entities: **Recyclable Type** and **Recyclable 
 - **Notes:**
   - Use any ORM you are comfortable with:
     - Entity Framework (used in this project)
-    - Dapper (for MinKg)
-    - Plain ADO .NET plus stored procedure is a plus (for MaxKg)
+    - Dapper 
+    - Plain ADO .NET plus stored procedure is a plus 
   - Use JavaScript if applicable
   - .NET Framework 4.5 to 4.8
 
