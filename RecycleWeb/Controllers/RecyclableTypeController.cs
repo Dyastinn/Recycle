@@ -23,11 +23,15 @@ namespace RecycleWeb.Controllers
 
         [HttpPost]
         public ActionResult Add(RecyclableType item) {
+            if (item.MinKg >= item.MaxKg) {
+                ModelState.AddModelError("MaxKg", "Max weight must be greater than Min weight.");
+                return View(item);
+            }
 
             _db.RecyclableTypes.Add(item);
             _db.SaveChanges();
- 
-            return View();
+
+            return RedirectToAction("List");
         }
 
         [HttpGet]
@@ -38,8 +42,13 @@ namespace RecycleWeb.Controllers
 
         [HttpPost]
         public ActionResult Edit(RecyclableType item) {
+            if (item.MinKg >= item.MaxKg) {
+                ModelState.AddModelError("MaxKg", "Max weight must be greater than Min weight.");
+                return View(item);
+            }
+
             var data = _db.RecyclableTypes.Where(x => x.Id == item.Id).FirstOrDefault();
-            if(data != null) {
+            if (data != null) {
                 data.Type = item.Type;
                 data.Rate = item.Rate;
                 data.MinKg = item.MinKg;
@@ -47,15 +56,22 @@ namespace RecycleWeb.Controllers
                 _db.SaveChanges();
             }
             return RedirectToAction("List");
-
-
         }
 
 
 
         public ActionResult Delete(int id) {
-            var data = _db.RecyclableTypes.Where(x => x.Id == id).FirstOrDefault();
-            _db.RecyclableTypes.Remove(data);
+            var recyclableType = _db.RecyclableTypes.Find(id);
+
+            if (recyclableType == null) {
+                return HttpNotFound();
+            }
+            var associatedItems = _db.RecyclableItems.Where(item => item.RecyclableTypeId == id);
+
+            _db.RecyclableItems.RemoveRange(associatedItems);
+
+            _db.RecyclableTypes.Remove(recyclableType);
+
             _db.SaveChanges();
 
             return RedirectToAction("List");
